@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9999FCD1F16918100220A4C /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9999FCC1F16918100220A4C /* ThirdViewController.swift */; };
+		A9999FCF1F16941800220A4C /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9999FCE1F16941800220A4C /* Person.swift */; };
 		A9CD8E1D1F154BFA00250DE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CD8E1C1F154BFA00250DE7 /* AppDelegate.swift */; };
 		A9CD8E1F1F154BFA00250DE7 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CD8E1E1F154BFA00250DE7 /* FirstViewController.swift */; };
 		A9CD8E211F154BFA00250DE7 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CD8E201F154BFA00250DE7 /* SecondViewController.swift */; };
@@ -15,7 +17,6 @@
 		A9CD8E291F154BFA00250DE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9CD8E271F154BFA00250DE7 /* LaunchScreen.storyboard */; };
 		A9CD8E341F154BFA00250DE7 /* Give_n_TakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CD8E331F154BFA00250DE7 /* Give_n_TakeTests.swift */; };
 		A9CD8E3F1F154BFA00250DE7 /* Give_n_TakeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CD8E3E1F154BFA00250DE7 /* Give_n_TakeUITests.swift */; };
-		A9CD8E4D1F154C9100250DE7 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CD8E4C1F154C9100250DE7 /* ThirdViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A9999FCC1F16918100220A4C /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThirdViewController.swift; path = ../ThirdViewController.swift; sourceTree = "<group>"; };
+		A9999FCE1F16941800220A4C /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		A9CD8E191F154BFA00250DE7 /* Give n Take.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Give n Take.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9CD8E1C1F154BFA00250DE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9CD8E1E1F154BFA00250DE7 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -50,7 +53,6 @@
 		A9CD8E3A1F154BFA00250DE7 /* Give n TakeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Give n TakeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9CD8E3E1F154BFA00250DE7 /* Give_n_TakeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Give_n_TakeUITests.swift; sourceTree = "<group>"; };
 		A9CD8E401F154BFA00250DE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A9CD8E4C1F154C9100250DE7 /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +103,15 @@
 		A9CD8E1B1F154BFA00250DE7 /* Give n Take */ = {
 			isa = PBXGroup;
 			children = (
-				A9CD8E1C1F154BFA00250DE7 /* AppDelegate.swift */,
 				A9CD8E1E1F154BFA00250DE7 /* FirstViewController.swift */,
 				A9CD8E201F154BFA00250DE7 /* SecondViewController.swift */,
-				A9CD8E4C1F154C9100250DE7 /* ThirdViewController.swift */,
+				A9999FCC1F16918100220A4C /* ThirdViewController.swift */,
+				A9999FCE1F16941800220A4C /* Person.swift */,
 				A9CD8E221F154BFA00250DE7 /* Main.storyboard */,
 				A9CD8E251F154BFA00250DE7 /* Assets.xcassets */,
 				A9CD8E271F154BFA00250DE7 /* LaunchScreen.storyboard */,
 				A9CD8E2A1F154BFA00250DE7 /* Info.plist */,
+				A9CD8E1C1F154BFA00250DE7 /* AppDelegate.swift */,
 			);
 			path = "Give n Take";
 			sourceTree = "<group>";
@@ -265,9 +268,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9999FCF1F16941800220A4C /* Person.swift in Sources */,
 				A9CD8E211F154BFA00250DE7 /* SecondViewController.swift in Sources */,
 				A9CD8E1D1F154BFA00250DE7 /* AppDelegate.swift in Sources */,
-				A9CD8E4D1F154C9100250DE7 /* ThirdViewController.swift in Sources */,
+				A9999FCD1F16918100220A4C /* ThirdViewController.swift in Sources */,
 				A9CD8E1F1F154BFA00250DE7 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -513,6 +517,7 @@
 				A9CD8E451F154BFA00250DE7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A9CD8E461F154BFA00250DE7 /* Build configuration list for PBXNativeTarget "Give n TakeTests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +526,7 @@
 				A9CD8E481F154BFA00250DE7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A9CD8E491F154BFA00250DE7 /* Build configuration list for PBXNativeTarget "Give n TakeUITests" */ = {
 			isa = XCConfigurationList;
@@ -529,6 +535,7 @@
 				A9CD8E4B1F154BFA00250DE7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
