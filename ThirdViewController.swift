@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 class TableViewController: UITableViewController {
+    
     var objects = [Any]()
     let realm = try! Realm()
     lazy var persons : Results <Person> =
@@ -29,7 +30,9 @@ class TableViewController: UITableViewController {
         
         for person in persons
         {
-            objects.append(person)
+            if person.amount < 0 {
+                 objects.append(person)
+            }
         }
     }
     
@@ -52,7 +55,7 @@ class TableViewController: UITableViewController {
             
             if let amount = Int(amountTextfield.text!)
             {
-                let person = Person(name: nameTextField.text!, amount: amount)
+                let person = Person(name: nameTextField.text!, amount: -amount)
                 self.objects.append(person)
                 try! self.realm.write {
                     self.realm.add(person)
