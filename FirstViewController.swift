@@ -30,7 +30,9 @@ class FirstViewController: UITableViewController {
         
         for person in personsVC1
         {
+            if person.amount > 0 {
             objects.append(person)
+            }
         }
     }
     
