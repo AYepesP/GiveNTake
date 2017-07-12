@@ -7,9 +7,15 @@
 //
 
 import UIKit
-
+import RealmSwift
 class TableViewController: UITableViewController {
     var objects = [Any]()
+    let realm = try! Realm()
+    lazy var persons : Results <Person> =
+        {
+            self.realm.objects(Person.self)
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,6 +27,10 @@ class TableViewController: UITableViewController {
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
         navigationItem.rightBarButtonItem = addButton
         
+        for person in persons
+        {
+            objects.append(person)
+        }
     }
     
     
@@ -44,7 +54,9 @@ class TableViewController: UITableViewController {
             {
                 let person = Person(name: nameTextField.text!, amount: amount)
                 self.objects.append(person)
-                
+                try! self.realm.write {
+                    self.realm.add(person)
+                }
                 self.tableView.reloadData()
             }
             
@@ -89,15 +101,18 @@ class TableViewController: UITableViewController {
      */
     
     
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-         if editingStyle == .delete {
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
             let person = objects.remove(at: indexPath.row)as! Person
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
+            try! self.realm.write {
+                self.realm.delete(person)
+            }
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
     
     
     /*

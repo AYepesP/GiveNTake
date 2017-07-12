@@ -7,10 +7,10 @@
 //
 
 import UIKit
-
-class Person: NSObject {
-    var name = String()
-    var amount = Int()
+import RealmSwift
+class Person: Object {
+   dynamic var name = String()
+   dynamic var amount = Int()
     
    convenience init(name: String, amount: Int)
     {
