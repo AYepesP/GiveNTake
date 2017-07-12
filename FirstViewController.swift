@@ -60,13 +60,11 @@ class FirstViewController: UITableViewController {
                 }
                 self.tableView.reloadData()
             }
-            
-            
-            
         }
         alert.addAction(insertAction)
         present(alert, animated: true, completion: nil)
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
