@@ -37,6 +37,9 @@ class SecondViewController: UIViewController {
     }
     func calculateBalance()
     {
+        youAreOwedLabel.text = "$0.00"
+        youOweLabel.text = "$0.00"
+        amountLabel.text = "$0.00"
         for person in persons
         {
             if person.amount > 0
