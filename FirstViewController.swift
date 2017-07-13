@@ -97,7 +97,7 @@ class FirstViewController: UITableViewController {
         
         let object = objects[indexPath.row] as! Person
         cell.textLabel!.text = object.name
-        cell.detailTextLabel!.text = "$" + String(object.amount)
+        cell.detailTextLabel!.text = "$" + String(NSString(format : "%.2f", object.amount))
         return cell
     }
     

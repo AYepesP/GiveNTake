@@ -91,7 +91,7 @@ class TableViewController: UITableViewController {
         
         let object = objects[indexPath.row] as! Person
         cell.textLabel!.text = object.name
-        cell.detailTextLabel!.text = "$" + String(abs(object.amount))
+        cell.detailTextLabel!.text = "$" + String(NSString( format: "%.2f" , abs(object.amount)))
         return cell
     }
     

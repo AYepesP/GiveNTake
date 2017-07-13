@@ -45,14 +45,14 @@ class SecondViewController: UIViewController {
             if person.amount > 0
             {
                 firstVeiwControllerSum += person.amount
-                youAreOwedLabel.text = "$"+String(firstVeiwControllerSum)
-                youOweLabel.text = "$" + String(thirdViewControllerSum)
+                youAreOwedLabel.text = "$"+String(NSString(format: "%.2f", firstVeiwControllerSum))
+                youOweLabel.text = "$" + String(NSString(format: "%.2f", thirdViewControllerSum))
             }
             else if (person.amount < 0)
             {
                 thirdViewControllerSum += person.amount
-                youOweLabel.text = "$"+String(abs(thirdViewControllerSum))
-                youAreOwedLabel.text = "$" + String(firstVeiwControllerSum)
+                youOweLabel.text = "$"+String(NSString(format: "%.2f", abs(thirdViewControllerSum)))
+                youAreOwedLabel.text = "$" + String(NSString(format:"%.2f",  firstVeiwControllerSum))
             }
             else {
                 youOweLabel.text = "$0.00"
@@ -66,12 +66,12 @@ class SecondViewController: UIViewController {
         if (total > 0 )
         {
             mainLabel.text = "You are owed:"
-            amountLabel.text = "$" + String(total)
+            amountLabel.text = "$" + String(NSString(format:"%.2f", total))
         }
         else if (total < 0)
         {
             mainLabel.text = "You owe:"
-            amountLabel.text = "$" + String(abs(total))
+            amountLabel.text = "$" + String(NSString(format: "%.2f", abs(total)))
         }
         else
         {
