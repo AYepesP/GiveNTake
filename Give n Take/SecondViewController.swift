@@ -43,11 +43,13 @@ class SecondViewController: UIViewController {
             {
                 firstVeiwControllerSum += person.amount
                 youAreOwedLabel.text = "$"+String(firstVeiwControllerSum)
+                youOweLabel.text = "$" + String(thirdViewControllerSum)
             }
             else if (person.amount < 0)
             {
                 thirdViewControllerSum += person.amount
                 youOweLabel.text = "$"+String(abs(thirdViewControllerSum))
+                youAreOwedLabel.text = "$" + String(firstVeiwControllerSum)
             }
             else {
                 youOweLabel.text = "$0.00"
@@ -71,7 +73,7 @@ class SecondViewController: UIViewController {
         else
         {
             mainLabel.text = "Balance :"
-            amountLabel.text = "$$0.00"
+            amountLabel.text = "$0.00"
         }
         total = 0
         thirdViewControllerSum = 0

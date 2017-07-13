@@ -114,7 +114,8 @@ class FirstViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let person = objects.remove(at: indexPath.row)as! Person
-            try! self.realm.write {
+            try! self.realm.write
+            {
                 self.realm.delete(person)
             }
             tableView.deleteRows(at: [indexPath], with: .fade)
