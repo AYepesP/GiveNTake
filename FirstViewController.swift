@@ -21,10 +21,10 @@ class FirstViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      
         if freshLaunch == true {
             freshLaunch = false
-            self.tabBarController!.selectedIndex = 1 // 2nd tab
+            self.tabBarController?.selectedIndex = 1 // 2nd tab
         }
         
         // Uncomment the following line to preserve selection between presentations
