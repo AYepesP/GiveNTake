@@ -10,9 +10,9 @@ import UIKit
 import RealmSwift
 class Person: Object {
    dynamic var name = String()
-   dynamic var amount = Int()
+   dynamic var amount = Double()
     
-   convenience init(name: String, amount: Int)
+    convenience init(name: String, amount: Double)
     {
         self.init()
         self.name = name

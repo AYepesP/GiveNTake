@@ -53,7 +53,7 @@ class TableViewController: UITableViewController {
             let nameTextField = alert.textFields! [0] as UITextField
             let amountTextfield = alert.textFields! [1] as UITextField
             
-            if let amount = Int(amountTextfield.text!)
+            if let amount = Double(amountTextfield.text!)
             {
                 let person = Person(name: nameTextField.text!, amount: -amount)
                 self.objects.append(person)
@@ -91,7 +91,7 @@ class TableViewController: UITableViewController {
         
         let object = objects[indexPath.row] as! Person
         cell.textLabel!.text = object.name
-        cell.detailTextLabel!.text = "$" + String(object.amount)
+        cell.detailTextLabel!.text = "$" + String(abs(object.amount))
         return cell
     }
     
@@ -133,14 +133,13 @@ class TableViewController: UITableViewController {
      }
      */
     
-    /*
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
+        let dvc = segue.destination as! SecondViewController
      }
-     */
+    
     
 }

@@ -11,14 +11,21 @@ import RealmSwift
 class FirstViewController: UITableViewController {
 
     var objects = [Any]()
+    var freshLaunch = true
     let realm = try! Realm()
-    lazy var personsVC1 : Results <Person> =
+    lazy var persons : Results <Person> =
         {
             self.realm.objects(Person.self)
     }()
-    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if freshLaunch == true {
+            freshLaunch = false
+            self.tabBarController!.selectedIndex = 1 // 2nd tab
+        }
         
         // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
@@ -28,7 +35,7 @@ class FirstViewController: UITableViewController {
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
         navigationItem.rightBarButtonItem = addButton
         
-        for person in personsVC1
+        for person in persons
         {
             if person.amount > 0 {
             objects.append(person)
@@ -53,8 +60,9 @@ class FirstViewController: UITableViewController {
             let nameTextField = alert.textFields! [0] as UITextField
             let amountTextfield = alert.textFields! [1] as UITextField
             
-            if let amount = Int(amountTextfield.text!)
+            if let amount = Double(amountTextfield.text!)
             {
+                
                 let person = Person(name: nameTextField.text!, amount: amount)
                 self.objects.append(person)
                 try! self.realm.write {
@@ -131,7 +139,7 @@ class FirstViewController: UITableViewController {
      }
      */
     
-    /*
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -139,6 +147,6 @@ class FirstViewController: UITableViewController {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
      }
-     */
+
     
 }
