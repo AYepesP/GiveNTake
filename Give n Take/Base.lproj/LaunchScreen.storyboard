@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MoneyBag" translatesAutoresizingMaskIntoConstraints="NO" id="TIV-Jl-ceH">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="money bag" translatesAutoresizingMaskIntoConstraints="NO" id="TIV-Jl-ceH">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Give n Take!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AgH-Qt-gym">
@@ -62,6 +62,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="MoneyBag" width="626" height="626"/>
+        <image name="money bag" width="1024" height="1024"/>
     </resources>
 </document>
