@@ -8,7 +8,8 @@
 
 import UIKit
 import RealmSwift
-class FirstViewController: UITableViewController {
+class FirstViewController: UITableViewController
+{
     
     var objects = [Any]()
     var freshLaunch = true
@@ -20,14 +21,15 @@ class FirstViewController: UITableViewController {
     }()
     
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         
-        if freshLaunch == true {
+        if freshLaunch == true
+        {
             freshLaunch = false
             self.tabBarController?.selectedIndex = 1 // 2nd tab
         }
-        
         // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
         
@@ -38,14 +40,16 @@ class FirstViewController: UITableViewController {
         
         for person in persons
         {
-            if person.amount > 0 {
+            if person.amount > 0
+            {
                 objects.append(person)
             }
         }
     }
     
     
-    func insertNewObject(_ sender: Any) {
+    func insertNewObject(_ sender: Any)
+    {
         let invalidInput = UIAlertController(title: "Invalid Input", message: nil, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
         invalidInput.addAction(okAction)
@@ -91,19 +95,22 @@ class FirstViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     // MARK: - Table view data source
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int
+    {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
         // #warning Incomplete implementation, return the number of rows
         return objects.count
     }
@@ -127,15 +134,18 @@ class FirstViewController: UITableViewController {
     
     
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    {
+        if editingStyle == .delete
+        {
             let person = objects.remove(at: indexPath.row)as! Person
             try! self.realm.write
             {
                 self.realm.delete(person)
             }
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
+        } else if editingStyle == .insert
+        {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
@@ -160,15 +170,16 @@ class FirstViewController: UITableViewController {
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
     override func viewWillAppear(_ animated: Bool) {
         if persons.count < 1{
             
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
-        navigationItem.rightBarButtonItem = addButton
+            let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
+            navigationItem.rightBarButtonItem = addButton
             
         }
     }
