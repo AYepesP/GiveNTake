@@ -8,7 +8,8 @@
 
 import UIKit
 import RealmSwift
-class SecondViewController: UIViewController {
+class SecondViewController: UIViewController
+{
     var objects = [Any]()
     let realm = try! Realm()
     lazy var persons : Results <Person> =
@@ -25,13 +26,15 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var youAreOwedLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         calculateBalance()
         
     }
     
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -54,7 +57,8 @@ class SecondViewController: UIViewController {
                 youOweLabel.text = "$"+String(NSString(format: "%.2f", abs(thirdViewControllerSum)))
                 youAreOwedLabel.text = "$" + String(NSString(format:"%.2f",  firstVeiwControllerSum))
             }
-            else {
+            else
+            {
                 youOweLabel.text = "$0.00"
                 youAreOwedLabel.text = "$0.00"
             }
@@ -82,7 +86,8 @@ class SecondViewController: UIViewController {
         thirdViewControllerSum = 0
         firstVeiwControllerSum = 0
     }
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool)
+    {
         calculateBalance()
     }
 }
