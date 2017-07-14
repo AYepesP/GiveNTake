@@ -49,7 +49,7 @@ class SecondViewController: UIViewController
             {
                 firstVeiwControllerSum += person.amount
                 youAreOwedLabel.text = "$"+String(NSString(format: "%.2f", firstVeiwControllerSum))
-                youOweLabel.text = "$" + String(NSString(format: "%.2f", thirdViewControllerSum))
+                youOweLabel.text = "$" + String(NSString(format: "%.2f", abs(thirdViewControllerSum)))
             }
             else if (person.amount < 0)
             {
@@ -83,8 +83,8 @@ class SecondViewController: UIViewController
             amountLabel.text = "$0.00"
         }
         total = 0
-        thirdViewControllerSum = 0
-        firstVeiwControllerSum = 0
+        thirdViewControllerSum = 0.0
+        firstVeiwControllerSum = 0.0
 
     }
     override func viewWillAppear(_ animated: Bool)

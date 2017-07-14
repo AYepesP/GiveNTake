@@ -71,13 +71,15 @@ class FirstViewController: UITableViewController
             let amountTextfield = alert.textFields! [1] as UITextField
             
             
-            if let amount = Double(amountTextfield.text!)
+            if var amount = Double(amountTextfield.text!)
             {
+                amount = Double(round(100*amount)/100)
+
                 self.name = nameTextField.text!
                 
                 if (self.name != "")
                 {
-                    if amount != 0
+                    if amount > 0
                     {
                         let person = Person(name: nameTextField.text!, amount: amount)
                         self.objects.append(person)
