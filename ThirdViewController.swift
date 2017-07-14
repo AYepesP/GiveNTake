@@ -16,7 +16,7 @@ class TableViewController: UITableViewController {
         {
             self.realm.objects(Person.self)
     }()
-    
+    var name = String()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,6 +38,10 @@ class TableViewController: UITableViewController {
     
     
     func insertNewObject(_ sender: Any) {
+        let invalidInput = UIAlertController(title: "Invalid Input", message: nil, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+        invalidInput.addAction(okAction)
+        
         let alert = UIAlertController(title: "Add Person", message: nil, preferredStyle: .alert)
         alert.addTextField { (textField) in
             textField.placeholder = "Name"
@@ -52,17 +56,29 @@ class TableViewController: UITableViewController {
         let insertAction = UIAlertAction(title: "Add", style: .default) { (action) in
             let nameTextField = alert.textFields! [0] as UITextField
             let amountTextfield = alert.textFields! [1] as UITextField
-            
+            self.name = nameTextField.text!
+
             if let amount = Double(amountTextfield.text!)
             {
-                let person = Person(name: nameTextField.text!, amount: -amount)
-                self.objects.append(person)
-                try! self.realm.write {
-                    self.realm.add(person)
+                if (self.name != "")
+                {
+                    let person = Person(name: nameTextField.text!, amount: -amount)
+                    self.objects.append(person)
+                    try! self.realm.write {
+                        self.realm.add(person)
+                    }
+                    self.tableView.reloadData()
                 }
-                self.tableView.reloadData()
+                else
+                {
+                    self.present(invalidInput, animated: true, completion: nil)
+                }
             }
-            
+            else
+            {
+                print ("invalid input")
+                self.present(invalidInput, animated: true, completion: nil)
+            }
             
             
         }

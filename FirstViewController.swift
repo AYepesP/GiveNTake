@@ -9,19 +9,20 @@
 import UIKit
 import RealmSwift
 class FirstViewController: UITableViewController {
-
+    
     var objects = [Any]()
     var freshLaunch = true
     let realm = try! Realm()
+    var name = String()
     lazy var persons : Results <Person> =
         {
             self.realm.objects(Person.self)
     }()
-
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        
         if freshLaunch == true {
             freshLaunch = false
             self.tabBarController?.selectedIndex = 1 // 2nd tab
@@ -38,13 +39,17 @@ class FirstViewController: UITableViewController {
         for person in persons
         {
             if person.amount > 0 {
-            objects.append(person)
+                objects.append(person)
             }
         }
     }
     
     
     func insertNewObject(_ sender: Any) {
+        let invalidInput = UIAlertController(title: "Invalid Input", message: nil, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+        invalidInput.addAction(okAction)
+        
         let alert = UIAlertController(title: "Add Person", message: nil, preferredStyle: .alert)
         alert.addTextField { (textField) in
             textField.placeholder = "Name"
@@ -59,16 +64,27 @@ class FirstViewController: UITableViewController {
         let insertAction = UIAlertAction(title: "Add", style: .default) { (action) in
             let nameTextField = alert.textFields! [0] as UITextField
             let amountTextfield = alert.textFields! [1] as UITextField
-            
+            self.name = nameTextField.text!
             if let amount = Double(amountTextfield.text!)
             {
-                
-                let person = Person(name: nameTextField.text!, amount: amount)
-                self.objects.append(person)
-                try! self.realm.write {
-                    self.realm.add(person)
+                if (self.name != "")
+                {
+                    let person = Person(name: nameTextField.text!, amount: amount)
+                    self.objects.append(person)
+                    try! self.realm.write {
+                        self.realm.add(person)
+                    }
+                    self.tableView.reloadData()
                 }
-                self.tableView.reloadData()
+                else
+                {
+                    self.present(invalidInput, animated: true, completion: nil)
+                }
+            }
+            else
+            {
+                print ("invalid input")
+                self.present(invalidInput, animated: true, completion: nil)
             }
         }
         alert.addAction(insertAction)
@@ -141,13 +157,19 @@ class FirstViewController: UITableViewController {
      */
     
     
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-
+    // MARK: - Navigation
     
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        if persons.count < 1{
+            
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
+        navigationItem.rightBarButtonItem = addButton
+            
+        }
+    }
 }
