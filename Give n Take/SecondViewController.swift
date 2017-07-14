@@ -79,7 +79,7 @@ class SecondViewController: UIViewController
         }
         else
         {
-            mainLabel.text = "Balance :"
+            mainLabel.text = "Balance:"
             amountLabel.text = "$0.00"
         }
         total = 0

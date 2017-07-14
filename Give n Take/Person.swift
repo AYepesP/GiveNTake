@@ -8,7 +8,8 @@
 
 import UIKit
 import RealmSwift
-class Person: Object {
+class Person: Object
+{
    dynamic var name = String()
    dynamic var amount = Double()
     
