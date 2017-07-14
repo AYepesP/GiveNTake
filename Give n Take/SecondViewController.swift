@@ -85,6 +85,7 @@ class SecondViewController: UIViewController
         total = 0
         thirdViewControllerSum = 0
         firstVeiwControllerSum = 0
+
     }
     override func viewWillAppear(_ animated: Bool)
     {

@@ -15,6 +15,7 @@ class FirstViewController: UITableViewController
     var freshLaunch = true
     let realm = try! Realm()
     var name = String()
+    var amount = Double()
     lazy var persons : Results <Person> =
         {
             self.realm.objects(Person.self)
@@ -68,17 +69,28 @@ class FirstViewController: UITableViewController
         let insertAction = UIAlertAction(title: "Add", style: .default) { (action) in
             let nameTextField = alert.textFields! [0] as UITextField
             let amountTextfield = alert.textFields! [1] as UITextField
-            self.name = nameTextField.text!
+            
+            
             if let amount = Double(amountTextfield.text!)
             {
+                self.name = nameTextField.text!
+                
                 if (self.name != "")
                 {
-                    let person = Person(name: nameTextField.text!, amount: amount)
-                    self.objects.append(person)
-                    try! self.realm.write {
-                        self.realm.add(person)
+                    if amount != 0
+                    {
+                        let person = Person(name: nameTextField.text!, amount: amount)
+                        self.objects.append(person)
+                        try! self.realm.write
+                        {
+                            self.realm.add(person)
+                        }
+                        self.tableView.reloadData()
                     }
-                    self.tableView.reloadData()
+                    else {
+                        self.present(invalidInput, animated: true, completion: nil)
+                        return
+                    }
                 }
                 else
                 {

@@ -14,8 +14,8 @@ class TableViewController: UITableViewController
     var objects = [Any]()
     let realm = try! Realm()
     lazy var persons : Results <Person> =
-    {
-        self.realm.objects(Person.self)
+        {
+            self.realm.objects(Person.self)
     }()
     var name = String()
     override func viewDidLoad()
@@ -34,7 +34,7 @@ class TableViewController: UITableViewController
         {
             if person.amount < 0
             {
-                 objects.append(person)
+                objects.append(person)
             }
         }
     }
@@ -61,17 +61,26 @@ class TableViewController: UITableViewController
             let nameTextField = alert.textFields! [0] as UITextField
             let amountTextfield = alert.textFields! [1] as UITextField
             self.name = nameTextField.text!
-
+            
             if let amount = Double(amountTextfield.text!)
             {
                 if (self.name != "")
                 {
-                    let person = Person(name: nameTextField.text!, amount: -amount)
-                    self.objects.append(person)
-                    try! self.realm.write {
-                        self.realm.add(person)
+                    if amount != 0
+                    {
+                        let person = Person(name: nameTextField.text!, amount: -amount)
+                        self.objects.append(person)
+                        try! self.realm.write
+                        {
+                            self.realm.add(person)
+                        }
+                        self.tableView.reloadData()
                     }
-                    self.tableView.reloadData()
+                    else {
+                        self.present(invalidInput, animated: true, completion: nil)
+                        return
+                    }
+                    
                 }
                 else
                 {
@@ -120,7 +129,7 @@ class TableViewController: UITableViewController
     
     /*
      // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool 
+     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
      {
      // Return false if you do not want the specified item to be editable.
      return true
@@ -155,7 +164,7 @@ class TableViewController: UITableViewController
     
     /*
      // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool 
+     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool
      {
      // Return false if you do not want the item to be re-orderable.
      return true
@@ -163,13 +172,13 @@ class TableViewController: UITableViewController
      */
     
     
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-     {
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
         let dvc = segue.destination as! SecondViewController
-     }
+    }
     
     
 }
