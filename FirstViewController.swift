@@ -129,7 +129,8 @@ class FirstViewController: UITableViewController
         return objects.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         let object = objects[indexPath.row] as! Person
@@ -158,7 +159,9 @@ class FirstViewController: UITableViewController
                 self.realm.delete(person)
             }
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert
+        }
+            
+        else if editingStyle == .insert
         {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
@@ -189,8 +192,10 @@ class FirstViewController: UITableViewController
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    override func viewWillAppear(_ animated: Bool) {
-        if persons.count < 1{
+    override func viewWillAppear(_ animated: Bool)
+    {
+        if persons.count < 1
+        {
             
             let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
             navigationItem.rightBarButtonItem = addButton
