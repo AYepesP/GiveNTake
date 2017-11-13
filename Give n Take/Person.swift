@@ -10,8 +10,8 @@ import UIKit
 import RealmSwift
 class Person: Object
 {
-   dynamic var name = String()
-   dynamic var amount = Double()
+   @objc dynamic var name = String()
+   @objc dynamic var amount = Double()
     
     convenience init(name: String, amount: Double)
     {

@@ -40,7 +40,7 @@ class TableViewController: UITableViewController
     }
     
     
-    func insertNewObject(_ sender: Any)
+    @objc func insertNewObject(_ sender: Any)
     {
         let invalidInput = UIAlertController(title: "Invalid Input", message: nil, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
