@@ -194,12 +194,5 @@ class FirstViewController: UITableViewController
     }
     override func viewWillAppear(_ animated: Bool)
     {
-        if persons.count < 1
-        {
-            
-            let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
-            navigationItem.rightBarButtonItem = addButton
-            
-        }
     }
 }
